@@ -1,0 +1,84 @@
+# SYSTEMDによるサーバ管理
+7系よりSYSTEMDによりサービス、サーバが制御・管理されています。  
+
+Systemd は、Linux オペレーティングシステム用のシステムおよびサービスマネージャーです。  
+SysV init スクリプトと後方互換するように設計されており、  
+起動時のシステムサービスの並行スタートアップやデーモンのオンデマンドのアクティベーション、  
+システム状態のスナップショットのサポート、依存ベースのサービス管理論理などの多くの機能を提供します。  
+RedHat Enterprise Linux 7 では、systemdはUpstartに代わるデフォルトのinitシステムです。  
+
+サービスユニットは、ファイル拡張子.service で終わり、init スクリプトと同様の目的を果たします。  
+サービスの表示、開始、停止、再開、有効化、無効化には、「service ユーティリティーと systemctl の比較」、  
+「chkconfig ユーティリティーと systemctl の比較」、および以下で説明されているように、  
+systemctl コマンドラインを使用します。  
+service および chkconfig はシステム内で利用可能でまだ機能しますが、  
+これらは互換性のために含まれており、使用の回避をお勧めします。  
+
+
+| service comm             | systemctl comm                                                  | ex |
+| ------------------------ | --------------------------------------------------------------- | -- |
+| service name start       | systemctl start name.service                                    | サービスを開始します。 |
+| service name stop        | systemctl stop name.service                                     | サービスを停止します。 |
+| service name restart     | systemctl restart name.service                                  | サービスを再起動します。 |
+| service name condrestart | systemctl try-restart name.service                              | サービスが実行中の場合のみ、再起動します。 |
+| service name reload      | systemctl reload name.service                                   | 設定を再読み込みします。 |
+| service name status      | systemctl status name.service ,systemctl is-active name.service | サービスが実行中かどうかをチェックします。 |
+| service --status-all     | systemctl list-units --type service --all                       | すべてのサービスのステータスを表示       |
+
+| chkconfig             | systemctl                                                        | ex |
+| --------------------- | ---------------------------------------------------------------- | --- |
+| chkconfig name on     | systemctl enable name.service                                    | サービスを有効にします。 |
+| chkconfig name off    | systemctl disable name.service                                   | サービスを無効にします。 |
+| chkconfig --list name | systemctl status name.service, systemctl is-enabled name.service | サービスが有効かどうかをチェックします。 |
+| chkconfig --list      | systemctl list-unit-files --type service                         | サービスすべてを一覧表示し、それらが有効かどうかをチェックします。 |
+
+#### システムターゲット
+
+またランレベルの概念が変わり、  
+特定モードのオペレーションを表す事前定義のランレベルを実装していました。  
+これらのランレベルは 0 から 6 までの数字で表示され、  
+システム管理者が特定のランレベルを有効にすると実行されるシステムサービスの選択によって定義されていました。  
+RedHat Enterprise Linux 7 では、ランレベルの概念は **systemd targets** に代わっています。  
+
+| ランレベル | ターゲット                           | ex                                     |
+| ------- | ---------------------------------- | -------------------------------------- |
+| 0       | runlevel0.target、poweroff.target   | システムをシャットダウンし、電源を切ります。      |
+| 1       | runlevel1.target、rescue.target     | レスキューシェルを設定します。                |
+| 2       | runlevel2.target、multi-user.target | 非グラフィカルな複数ユーザーシステムを設定します。 |
+| 3       | runlevel3.target、multi-user.target | 非グラフィカルな複数ユーザーシステムを設定します。 |
+| 4       | runlevel4.target、multi-user.target | 非グラフィカルな複数ユーザーシステムを設定します。 |
+| 5       | runlevel5.target、graphical.target  | グラフィカルな複数ユーザーシステムを設定します。   |
+| 6       | runlevel6.target、reboot.target     | システムをシャットダウンして再起動します。       |
+
+現在のデフォルトターゲットを確認  
+
+```
+# systemctl get-default
+```
+
+デフォルトターゲットの変更  
+
+```
+# systemctl set-default ${TARGET_NAME}
+```
+
+現在のターゲットを変更  
+
+```
+# systemctl isolate ${TARGET_NAME}
+```
+
+#### OSの停止
+サーバの停止コマンドも変わっています。  
+今までのものも利用できるが、いづれサポートしなくなるでしょう。  
+
+| command                | ex                              |
+| ---------------------- | ------------------------------- |
+| systemctl halt         | システムを停止します。                |
+| systemctl poweroff     | システムの電源を切ります。             |
+| systemctl reboot       | システムを再起動します。              |
+| systemctl suspend      | システムをサスペンドします。           |
+| systemctl hibernate    | システムを休止状態にします。           |
+| systemctl hybrid-sleep | システムを休止状態にしてサスペンドします。 |
+
+systemctlはSSH越しにリモートサーバに対しても可能らしい。  
