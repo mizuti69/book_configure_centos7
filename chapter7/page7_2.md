@@ -59,7 +59,7 @@ OPTIONS="-g -x"
 NTPを再起動して反映させます。  
 
 ```
-# service ntpd restart
+# systemctl restart ntpd
 ```
 
 #### NTPDの起動
@@ -67,8 +67,8 @@ NTPを再起動して反映させます。
 設定が完了したらNTPデーモンを起動し時刻同期を開始します。  
 
 ```
-# chkconfig ntpd on
-# service ntpd start
+# systemctl enable ntpd
+# systemctl start ntpd
 ```
 
 同期が開始すると下記のように同期ステータスにて確認できます。  
@@ -107,7 +107,7 @@ NTPサーバ2
 `ntpdate`サービスはデーモンではないので自動起動を有効化にするのみで起動時に実行されます。  
 
 ```
-# chkconfig ntpdate on
+# systemctl enable ntpdate
 ```
 
 またハードウェアクロックはほうっておくと必ずずれていくため、  
