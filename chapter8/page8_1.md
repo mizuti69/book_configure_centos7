@@ -30,3 +30,16 @@ yumの処理で除外するようにしておきます。
 exclude=kernel*
 installonlypkgs=kernel kernel-smp kernel-devel kernel-smp-devel kernel-largesmp kernel-largesmp-devel kernel-hugemem kernel-hugemem-devel
 ```
+
+初期セットアップ以降にアップデートしたパッケージは履歴保持するよう設定  
+
+```
+# vim /etc/yum.conf
+keepcache=1
+```
+
+下記コマンドで履歴も消えてしまうので注意  
+
+```
+# yum clean all
+```

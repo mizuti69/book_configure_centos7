@@ -21,18 +21,36 @@ OS7系よりfprintdモジュールがなくなっています。
 ```
 # vim /etc/security/pwquality.conf
 minlen = 8
-dcredit = -1
-ucredit = -1
-lcredit = -1
+dcredit = 1
+ucredit = 1
+lcredit = 1
+```
+
+設定後は`pwquality.conf`を読み込むようにpamモジュールを追記する。  
+
+```
+# vim /etc/pam.d/system-auth-ac
+password    requisite     pam_pwquality.so enforce_for_root
+```
+
+```
+# vim /etc/pam.d/password-auth-ac
+password    requisite     pam_pwquality.so enforce_for_root
 ```
 
 `pam_tally2.so`モジュールも`pam_faillock.so`に変わっていますが、同様に利用できます。  
 
 ```
 # vim /etc/pam.d/system-auth-ac
+
 auth        required      pam_faillock.so preauth silent audit deny=10 unlock_time=120
-auth        [default=die] pam_faillock.so preauth silent audit deny=10 unlock_time=120
+auth        sufficient    pam_unix.so nullok try_first_pass
+auth        [default=die] pam_faillock.so preauth silent authfail audit deny=10 unlock_time=120
+
+account     required      pam_faillock.so
 ```
+
+※`account`の記述場所は注意。一番上に書く  
 
 また今までどおり、古いパスワードの記憶設定も行います。  
 

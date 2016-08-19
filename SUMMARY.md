@@ -28,6 +28,8 @@
   * [cron設定](chapter3/page3_6.md)
   * [ログローテート](chapter3/page3_7.md)
   * [カーネルパニック対応](chapter3/page3_8.md)
+	* [ユニットファイルの作成](chapter3/page3_9.md)  
+	* [SYSTEMDログレベルの変更](chapter3/page3_10.md)
 * [アカウント管理](chapter4/index.md)
   * [ユーザーデフォルトの設定](chapter4/page4_1.md)
   * [パスワードポリシー](chapter4/page4_2.md)
@@ -49,3 +51,4 @@
 * [セキュリティパッチの適用](chapter8/index.md)
   * [アップデートの適応](chapter8/page8_1.md)
   * [自動アップデート設定](chapter8/page8_2.md)
+* [その他](chapter9/index.md)
