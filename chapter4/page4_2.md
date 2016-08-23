@@ -77,3 +77,27 @@ system-auth および password-auth の各ファイルはauthconfig ユーティ
 ```
 # faillock --user ${username} --reset
 ```
+
+#### 指紋認証
+デフォルトでfprintdをインストールしており、fprintdサービスを停止している場合、  
+下記のようなエラーメッセージがユーザログインのたびに出力される。  
+
+```
+XXX 01 15:05:45 hostneme fprintd: ** (fprintd:26535): WARNING **: fprint init failed with error -99
+XXX 01 15:05:45 hostneme systemd: fprintd.service: main process exited, code=exited, status=157/n/a
+XXX 01 15:05:45 hostneme systemd: Unit fprintd.service entered failed state.
+XXX 01 15:05:45 hostneme systemd: fprintd.service failed.
+```
+
+pamでfprintdモジュールが呼び出されているが、fprintdサービスが停止しているため出力される。  
+クラウド環境など指紋認証デバイスを利用しないのであれば案インストールし、  
+pamから認証モジュールの呼び出しをコメントアウトしておく。  
+
+```
+# yum remove fprintd
+```
+
+```
+# vim /etc/pam.d/system-auth-ac
+#auth        sufficient    pam_fprintd.so
+```
