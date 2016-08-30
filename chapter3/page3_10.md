@@ -2,8 +2,8 @@
 systemdのデフォルト設定でログレベルが`info`に設定されているため下記のようなログが大量に出力される。  
 
 ```
-Jul 15 00:10:01 ikb-devk-opm01 systemd: Started Session 7973 of user root.
-Jul 15 00:10:01 ikb-devk-opm01 systemd: Starting Session 7973 of user root.
+Jul 15 00:10:01 hostname systemd: Started Session 7973 of user root.
+Jul 15 00:10:01 hostname systemd: Starting Session 7973 of user root.
 ```
 
 systemdのログレベルを変更する  
