@@ -32,6 +32,10 @@ service および chkconfig はシステム内で利用可能でまだ機能し�
 | chkconfig --list name | systemctl status name.service, systemctl is-enabled name.service | サービスが有効かどうかをチェックします。 |
 | chkconfig --list      | systemctl list-unit-files --type service                         | サービスすべてを一覧表示し、それらが有効かどうかをチェックします。 |
 
+OS7系でも従来の`initd`はサポートしているため、`systemd`に対応していないサービスもインストールは出来ます。  
+`initd`に登録したサービスは上記新たしい`systemctl`コマンドでは表示されないため、  
+従来どおり`chkconfig`コマンドで管理する必要があります。  
+
 #### システムターゲット
 
 またランレベルの概念が変わり、  
