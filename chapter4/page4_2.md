@@ -30,12 +30,12 @@ lcredit = 1
 
 ```
 # vim /etc/pam.d/system-auth-ac
-password    requisite     pam_pwquality.so enforce_for_root
+password    required      pam_pwquality.so enforce_for_root
 ```
 
 ```
 # vim /etc/pam.d/password-auth-ac
-password    requisite     pam_pwquality.so enforce_for_root
+password    required      pam_pwquality.so enforce_for_root
 ```
 
 `pam_tally2.so`モジュールも`pam_faillock.so`に変わっていますが、同様に利用できます。  
