@@ -17,3 +17,7 @@ Match User sftp-user
   ChrootDirectory ~/
   ForceCommand internal-sftp
 ```
+
+`Match`ディレクティブを利用するときはコンフィグファイルの最後に記述するようにします。  
+`Match`ディレクティブの後にグローバル用の設定を記述しても、  
+`Match`ディレクティブ内の設定と判断され有効に動かない場合があります。  
