@@ -26,7 +26,7 @@
 `nmcli`で`hostname`を変更した場合`hostnamed`を再起動する必要がある。  
 
 ```
-# # systemctl restart systemd-hostnamed
+# systemctl restart systemd-hostnamed
 ```
 
 hostsには今までどおり手動で追記しておく。  
