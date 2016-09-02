@@ -25,5 +25,19 @@ apply_updates = no
 
 ```
 # vim /etc/sysconfig/yum-cron
-MAILTO=root
+...
+emit_via = email
+
+...
+email_to = root
+```
+
+
+**アップデートパッケージの制限**  
+全てのアップデートパッケージではなく、セキュリティ関連だけにしたい場合  
+
+```
+# vim /etc/sysconfig/yum-cron
+...
+update_cmd = security
 ```
