@@ -10,3 +10,9 @@ NetworkManager経由で設定します。
 ```
 # nmcli con up enoXXXXX
 ```
+
+設定された各パラメータ状況を確認しておく。  
+
+```
+# nmcli c show id enoXXXXX
+```
