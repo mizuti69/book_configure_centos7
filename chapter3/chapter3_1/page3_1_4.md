@@ -15,7 +15,12 @@ kernelレベルで無効化することによりSELinuxの動作異常やミド�
 
 kernelパラメータを変更するためsysctlにて記述します。  
 sysctl設定ファイルは分散コンフィグでの管理をより明示的に行うようになっています。  
-デフォルトのパラメータは`/usr/lib/sysctl.d/00-system.conf`にて管理されている。
+デフォルトのパラメータは`/usr/lib/sysctl.d/*`にて管理されている。
+
+```
+# /usr/lib/sysctl.d/00-system.conf
+# /usr/lib/sysctl.d/50-default.conf
+```
 
 追加、変更する場合は`sysctl.conf`か`sysctl.d/<name>.conf`ファイルに記述します。  
 

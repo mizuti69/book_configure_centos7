@@ -2,7 +2,7 @@
 NetworkManager経由で設定します。  
 
 ```
-# nmcli con mod test-lab ipv4.dns "8.8.8.8 8.8.4.4"
+# nmcli con mod enoXXXXX ipv4.dns "8.8.8.8 8.8.4.4"
 ```
 
 設定の反映  
