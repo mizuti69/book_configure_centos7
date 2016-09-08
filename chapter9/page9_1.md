@@ -17,3 +17,10 @@
 
 Enter を押して現在の選択 [+] を保持するか、選択番号を入力します:
 ```
+
+自動起動設定  
+
+```
+# systemctl start postfix
+# systemctl enable postfix
+```

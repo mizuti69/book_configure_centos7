@@ -28,5 +28,6 @@ sender_canonical_maps = regexp:/etc/postfix/sender_canonical
 再起動して反映  
 
 ```
+# postfix check
 # systemctl restart postfix
 ```

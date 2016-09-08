@@ -32,5 +32,6 @@ hogehoge.co.jp	            :hogehoge.co.jp
 設定の反映  
 
 ```
+# postfix check
 # systemctl restart postfix
 ```
