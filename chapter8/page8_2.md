@@ -1,6 +1,6 @@
 # 自動アップデート設定
 自動アップデートを行いたい場合は`yum-cron`をインストールします。  
-OS7系ではデフォルトでインストールされています。  
+デフォルトでインストールされている場合もありますが、無ければインストールします。  
 
 ```
 # yum install yum-cron
@@ -40,4 +40,11 @@ email_to = root
 # vim /etc/sysconfig/yum-cron
 ...
 update_cmd = security
+```
+
+cronサービスの有効化  
+
+```
+# systemctl start yum-cron
+# systemctl enable yum-cron
 ```
