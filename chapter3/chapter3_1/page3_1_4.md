@@ -7,6 +7,12 @@ NICのipv6モジュールを無効化。
 # nmcli c modify enoXXXXXXX ipv6.method ignore
 ```
 
+反映  
+
+```
+# nmcli c up enoXXXXXXX
+```
+
 システム上ipv6モジュールを無効化。  
 kernelレベルでipv6を無効化する場合、
 以前はmodprobedを利用してkernelのipv6モジュール読み込みを無効化していたが、  
@@ -34,4 +40,10 @@ net.ipv6.conf.default.disable_ipv6 = 1
 
 ```
 # sysctl -p
+```
+
+インターフェイス情報に`inet6`情報が出力されなくなる。  
+
+```
+# ip add show
 ```
