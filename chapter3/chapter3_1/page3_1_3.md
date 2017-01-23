@@ -16,3 +16,9 @@ NetworkManager経由で設定します。
 ```
 # nmcli c show id enoXXXXX
 ```
+
+名前解決の確認にはdigツールをインストールしておく  
+
+```
+# yum install bind-utils
+```
