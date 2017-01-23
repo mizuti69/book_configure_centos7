@@ -37,6 +37,42 @@ NIC状態の確認
 # nmcli c modify enoXXXXX connection.autoconnect yes
 ```
 
+#### NIC名の変更
+OS7系からNIC命名規則が変更になっている為、従来のethXに変更する場合は、以下の手順を実施します。  
+
+Graubファイルを編集  
+
+```
+# cd /etc/default
+# cp -ip grub grub.org
+# vi grub
+#GRUB_CMDLINE_LINUX="rd.lvm.lv=centos_fuzz7/swap rd.lvm.lv=centos_fuzz7/root rhgb quiet"
+GRUB_CMDLINE_LINUX="rd.lvm.lv=centos_fuzz7/swap rd.lvm.lv=centos_fuzz7/root rhgb quiet net.ifnames=0 biosdevname=0"
+```
+
+変更内容を反映  
+
+```
+# grub2-mkconfig -o /boot/grub2/grub.cfg
+```
+
+NICファイル名の変更  
+
+```
+# cd /etc/sysconfig/network-scripts/
+# mv -i ifcfg-enoXXXXXXX ifcfg-ethX
+```
+
+NIC設定の変更  
+
+```
+# vi ifcfg-ethX
+NAME=${NIC名}
+DEVICE=${NIC名}
+```
+
+設定完了後、再起動するとなお安全。  
+
 #### 固定IP設定
 
 NICはデフォルトではDHCP設定になっているため、固定IPを割り振ります。  
@@ -79,6 +115,3 @@ NICに設定できる詳細なパラメータは下記コマンドで確認す�
 ```
 nmcli -p con show "enoXXXXX"
 ```
-
-
-
