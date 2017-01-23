@@ -38,6 +38,7 @@
   * [SU設定](chapter5/page5_2.md)
   * [不要なサービスの停止](chapter5/page5_3.md)
   * [firewalld](chapter5/page5_4.md)
+  * [iptables](chapter5/page5_5.md)
 * [SSHサーバ設定](chapter6/index.md)
   * [基本設定](chapter6/page6_1.md)
   * [セキュリティ設定](chapter6/page6_2.md)
@@ -60,3 +61,4 @@
   * [送信制限](chapter9/page9_6.md)
 * [その他](chapter10/index.md)
   * [便利ツール](chapter10/page10_1.md)
+  * [Fsecure Linux セキュリティ コマンドラインエディション](chapter10/page10_2.md)
