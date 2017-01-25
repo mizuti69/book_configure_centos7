@@ -21,9 +21,9 @@ OS7系よりfprintdモジュールがなくなっています。
 ```
 # vim /etc/security/pwquality.conf
 minlen = 8
-dcredit = 1
-ucredit = 1
-lcredit = 1
+dcredit = -1
+ucredit = -1
+lcredit = -1
 ```
 
 設定後は`pwquality.conf`を読み込むようにpamモジュールを追記する。  
