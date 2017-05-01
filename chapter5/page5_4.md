@@ -8,6 +8,15 @@ firewalldの稼働状況確認
 # firewall-cmd --state
 ```
 
+インストールされていない場合インストールする。
+
+```
+# yum install firewalld
+```
+
+NetworkManager管理環境で後からfirewalldをインストールした場合、管理の競合が発生する場合があるため、  
+NetworkManagerを再起動しておく。  
+
 firewalldでは`zone`という単位でセキュリティグループを定義しています。  
 セキュリティグループにNICを登録する事でポリシーの定義、管理を簡単に行えるようにしています。  
 
@@ -33,6 +42,14 @@ LANに接続しているNICがデフォルトでどのzoneに登録されてい�
 
 ```
 # firewall-cmd --get-active-zones
+```
+
+NICの登録ゾーンを変更する場合はnmcliコマンドで設定する。  
+
+```
+# nmcli c modify "eth0" connection.zone public
+# nmcli c up eth0
+# nmcli -p con show "eth0"
 ```
 
 デフォルトで利用されるzoneの情報は下記設定ファイルで管理されています。  
@@ -71,7 +88,8 @@ firewalldコマンドで操作、変更した内容を永続的にするには�
 ファイアウォールのリロード自体は接続を切断しませんが、一時的な変更が破棄されることに注意してください。  
 
 #### ポリシーの登録
-zoneにデフォルトでどのようなポリシーが設定されているか確認します。  
+firewalldのポリシーは基本的にINに対するポリシーを管理します。  
+まずzoneにデフォルトでどのようなポリシーが設定されているか確認します。  
 
 ```
 # firewall-cmd --zone=public --list-all
@@ -106,10 +124,90 @@ dhcpv6-client ssh
 
 `--remove-service=smtp`  
 
+firewall経由でiptablesにはどのように設定されているかを確認しておく。  
+
+```
+# iptables -nL
+```
+
+内容を確認してみると、チェインを細分化し管理している事がわかる。  
+`***_public`と書いてあるのが基本操作で設定するチェイン
+`***_public_****`の内容をインクルードしており、  
+基本のサービスやポート登録、リッチルールはここで管理されている。  
+それらを`***_IN_ZONE`でインクルードして、  
+さらにそれを`OUTPUT`,`INPUT`チェインにインクルードしてゾーンごとに管理している  
+
+後述する`****_direct`だけ直接`INPUT`に等に配置されている。
 
 #### リッチルール
 サービスやポート単位の許可・拒否ではなく細かく制御したいときに利用できるルールを作成できます。  
+制御できるのは通常どおりINに対するアクセスのみになります。  
 
+**リッチルールの基本書式**  
+
+```
+firewall-cmd [--permanent] --add-rich-rule    = ルール（追加）[––timeout=(seconds)]
+firewall-cmd [--permanent] --remove-rich-rule = ルール（削除）[––timeout=(seconds)]
+```
+
+定義内容の確認  
+
+```
+# firewall-cmd --list-rich-rules
+```
+
+定義例
+
+```
+# firewall-cmd --add-rich-rule="rule family=ipv4 source address=1.0.16.0/20 service name=https accept"
+```
+
+iptablesの定義方法と似ているが、ゾーンの概念があり送信元やポートに対してアクセスを制御できる。  
+
+#### ダイレクトルール
+firewalldを経由してiptablesに直接定義を記述するようにルールを作成できる。  
+基本挙動とちがいOUTに対するルールも作成できる。  
+
+書式
+
+```
+firewall-cmd [--permanent] --direct --add-rule {ipv4|ipv6|eb} <テーブル> <チェイン> <優先順位> <引数>（追加）
+firewall-cmd [--permanent] --direct --remove-rule {ipv4|ipv6|eb} <テーブル> <チェイン> <優先順位> <引数>（削除）
+```
+
+定義例
+
+```
+# firewall-cmd　--permanent --direct --add-rule ipv4 filter OUTPUT_direct 2 -j DROP
+# firewall-cmd　--permanent --direct --add-rule ipv4 filter INPUT_direct 1 -s 0.0.0.0 -p tcp -m state --state NEW --dport 22 -j ACCEPT
+```
+
+iptablesライクに定義を行う事が出来るので、iptablesからも乗り換えられるようにできている。  
+これであればiptablesを使ったほうが便利なような気はする。。。  
+
+iptablesと違い初期化が無いため追加と削除は別々に行なわなければならないが、
+XML形式で記述する事でiptables時と同様にポリシーを簡単に管理、配布する事が出来る。  
+
+```
+# vim /etc/firewalld/direct.xml
+<?xml version="1.0" encoding="utf-8"?>
+<direct>
+  <!-- default rule -->
+  <rule priority="2" table="filter" ipv="ipv6" chain="INPUT_direct">-j DROP</rule>
+  <rule priority="2" table="filter" ipv="ipv4" chain="OUTPUT_direct">-j DROP</rule>
+  <rule priority="2" table="filter" ipv="ipv6" chain="OUTPUT_direct">-j DROP</rule>
+  <rule priority="2" table="filter" ipv="ipv4" chain="FORWARD_direct">-j DROP</rule>
+  <rule priority="2" table="filter" ipv="ipv6" chain="FORWARD_direct">-j DROP</rule>
+  <!-- ssh -->
+  <rule priority="1" table="filter" ipv="ipv4" chain="INPUT_direct">-s 59.159.73.35 -p tcp -m state --state NEW --dport 22 -j ACCEPT</rule>
+</direct>
+```
+
+#### ルールの管理
+firewalldではゾーンポリシー、リッチルール、ダイレクトルールがそれぞれ有効に動きます。  
+そのため定義の管理やルールの内容、適応順序は`iptable -nL`等でしっかり把握しておく必要があります。  
+
+またデフォルトポリシーは`DROP`ではありません。  
 
 #### 操作ロック
 他root実行されているアプリケーションからfirewallの設定を変更されたくない場合ロックすることが可能  
