@@ -2,10 +2,21 @@ body,h1,h2,h3,ul,p,li {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
 }
 
-.book .book-body .page-wrapper .page-inner section.normal * {
+.comments-section * {
   font-size: 14px;
 }
 
-body {
-  font-size: 12px;
+.chapter * {
+  font-size: 14px;
+}
+
+h1 {
+  padding: .25em 0 .5em .75em;
+  border-bottom: 2px solid #D8D8D8;
+}
+
+h2,h3 {
+  padding: .25em 0 .5em .75em;
+  border-left: 10px solid #848484;
+  border-bottom: 2px solid #FFBF00;
 }
