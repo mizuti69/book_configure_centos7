@@ -3,7 +3,7 @@
 * [Title](./README.md)
 * [はじめに](1.introduction/index.md)
   * [OS基本設計](1.introduction/1.basic_design/1.basic_os_design.md)
-  * [OS基本設計](1.introduction/1.basic_design/2.basic_network_design.md)
+  * [ネットワーク基本設計](1.introduction/1.basic_design/2.basic_network_design.md)
 * [OSのインストール](2.install/index.md)
   * [前提条件](2.install/1.premise.md)
   * [インストール言語の選択](2.install/2.install_language.md)
