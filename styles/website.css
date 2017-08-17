@@ -15,7 +15,7 @@ h1 {
   border-bottom: 2px solid #D8D8D8;
 }
 
-h2,h3 {
+h2,h3,h4,h5 {
   padding: .25em 0 .5em .75em;
   border-left: 10px solid #848484;
   border-bottom: 2px solid #FFBF00;
