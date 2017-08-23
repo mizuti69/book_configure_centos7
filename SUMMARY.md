@@ -31,6 +31,7 @@
   * [ログローテート](3.configure/6.configure_logrotate.md)
   * [カーネルパニック対応](3.configure/7.configure_panic.md)
   * [SYSTEMDログレベルの変更](3.configure/8.configure_systemd.md)
+  * [運用用設定](3.configure/9.configure_operation.md)
 * [アカウント管理](4.user/index.md)
   * [ユーザーデフォルトの設定](4.user/1.user_default.md)
   * [パスワードポリシー](4.user/2.user_password.md)
@@ -61,3 +62,4 @@
 * [その他](10.tips/index.md)
   * [便利ツール](10.tips/1.tips_tools.md)
   * [Fsecure Linux セキュリティ コマンドラインエディション](10.tips/2.tips_fsecure.md)
+  * [sysstatの設定](10.tips/3.tips_sysstat.md)
