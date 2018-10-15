@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>SSHサーバ設定 · GitBook</title>
+        <title>パスワード有効期限の設定 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -49,10 +49,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="1.ssh_config.html" />
     
-    
-    <link rel="prev" href="../4.security/5.security_iptables.html" />
+    <link rel="prev" href="4.tips_audit.html" />
     
 
     </head>
@@ -592,9 +590,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6" data-path="./">
+        <li class="chapter " data-level="1.6" data-path="../5.ssh/">
             
-                <a href="./">
+                <a href="../5.ssh/">
             
                     
                     SSHサーバ設定
@@ -606,9 +604,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="1.ssh_config.html">
+        <li class="chapter " data-level="1.6.1" data-path="../5.ssh/1.ssh_config.html">
             
-                <a href="1.ssh_config.html">
+                <a href="../5.ssh/1.ssh_config.html">
             
                     
                     基本設定
@@ -619,9 +617,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="2.ssh_auth.html">
+        <li class="chapter " data-level="1.6.2" data-path="../5.ssh/2.ssh_auth.html">
             
-                <a href="2.ssh_auth.html">
+                <a href="../5.ssh/2.ssh_auth.html">
             
                     
                     認証設定
@@ -632,9 +630,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.3" data-path="3.ssh_sftp.html">
+        <li class="chapter " data-level="1.6.3" data-path="../5.ssh/3.ssh_sftp.html">
             
-                <a href="3.ssh_sftp.html">
+                <a href="../5.ssh/3.ssh_sftp.html">
             
                     
                     SFTP設定
@@ -811,9 +809,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10" data-path="../9.tips/">
+        <li class="chapter " data-level="1.10" data-path="./">
             
-                <a href="../9.tips/">
+                <a href="./">
             
                     
                     その他
@@ -825,9 +823,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.10.1" data-path="../9.tips/1.tips_tools.html">
+        <li class="chapter " data-level="1.10.1" data-path="1.tips_tools.html">
             
-                <a href="../9.tips/1.tips_tools.html">
+                <a href="1.tips_tools.html">
             
                     
                     便利ツール
@@ -838,9 +836,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.2" data-path="../9.tips/2.tips_fsecure.html">
+        <li class="chapter " data-level="1.10.2" data-path="2.tips_fsecure.html">
             
-                <a href="../9.tips/2.tips_fsecure.html">
+                <a href="2.tips_fsecure.html">
             
                     
                     Fsecure Linux セキュリティ コマンドラインエディション
@@ -851,9 +849,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.3" data-path="../9.tips/3.tips_sysstat.html">
+        <li class="chapter " data-level="1.10.3" data-path="3.tips_sysstat.html">
             
-                <a href="../9.tips/3.tips_sysstat.html">
+                <a href="3.tips_sysstat.html">
             
                     
                     sysstatの設定
@@ -864,9 +862,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.4" data-path="../9.tips/4.tips_audit.html">
+        <li class="chapter " data-level="1.10.4" data-path="4.tips_audit.html">
             
-                <a href="../9.tips/4.tips_audit.html">
+                <a href="4.tips_audit.html">
             
                     
                     監査ログの設定
@@ -877,9 +875,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.5" data-path="../9.tips/5.tips_chage.html">
+        <li class="chapter active" data-level="1.10.5" data-path="5.tips_chage.html">
             
-                <a href="../9.tips/5.tips_chage.html">
+                <a href="5.tips_chage.html">
             
                     
                     パスワード有効期限の設定
@@ -925,7 +923,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >SSHサーバ設定</a>
+        <a href=".." >パスワード有効期限の設定</a>
     </h1>
 </div>
 
@@ -940,7 +938,36 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="ssh&#x30B5;&#x30FC;&#x30D0;&#x8A2D;&#x5B9A;">SSH&#x30B5;&#x30FC;&#x30D0;&#x8A2D;&#x5B9A;</h1>
+                                <h1 id="os&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x306E;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x6709;&#x52B9;&#x671F;&#x9650;&#x8A2D;&#x5B9A;">OS&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x306E;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x6709;&#x52B9;&#x671F;&#x9650;&#x8A2D;&#x5B9A;</h1>
+<p>&#x8A8D;&#x8A3C;&#x30B5;&#x30FC;&#x30D0;&#x3092;&#x7ACB;&#x3066;&#x305A;&#x306B;OS&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x306E;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x6709;&#x52B9;&#x671F;&#x9650;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3001;&#x901A;&#x77E5;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;  </p>
+<h2 id="&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x6709;&#x52B9;&#x671F;&#x9650;&#x306E;&#x8A2D;&#x5B9A;">&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x6709;&#x52B9;&#x671F;&#x9650;&#x306E;&#x8A2D;&#x5B9A;</h2>
+<p>&#x524D;&#x56DE;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x8A2D;&#x5B9A;&#x304B;&#x3089;&#x6307;&#x5B9A;&#x65E5;&#x6570;&#x904E;&#x304E;&#x305F;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x306E;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x3092;&#x7121;&#x52B9;&#x5316;&#x3055;&#x305B;&#x307E;&#x3059;<br>&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x304C;&#x5207;&#x308C;&#x3066;&#x3082;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x30ED;&#x30C3;&#x30AF;&#x306F;&#x3057;&#x307E;&#x305B;&#x3093; </p>
+<p>&#x4F8B;&#xFF09;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x6709;&#x52B9;&#x671F;&#x9650;&#x3092;90&#x65E5;&#x306B;&#x8A2D;&#x5B9A;  </p>
+<pre><code># chage -M 90 {&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x540D;}
+</code></pre><p>&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x6709;&#x52B9;&#x671F;&#x9650;&#x304C;&#x5207;&#x308C;&#x305F;&#x5F8C;SSH&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3059;&#x308B;&#x3068;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306A;&#x6587;&#x8A00;&#x304C;&#x8868;&#x793A;&#x3055;&#x308C;<br>&#x5909;&#x66F4;&#x3092;&#x4FC3;&#x3055;&#x308C;&#x307E;&#x3059;  </p>
+<pre><code>You are required to change your password immediately (root enforced)
+WARNING: Your password has expired.
+You must change your password now and login again!
+Changing password for user user.
+Changing password for user.
+(current) UNIX password: &lt;&#x53E4;&#x3044;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&gt;
+New password: &lt;&#x65B0;&#x3057;&#x3044;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&gt;
+Retype new password: &lt;&#x65B0;&#x3057;&#x3044;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&gt;
+</code></pre><h2 id="&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x6709;&#x52B9;&#x671F;&#x9650;&#x5207;&#x308C;&#x901A;&#x77E5;">&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x6709;&#x52B9;&#x671F;&#x9650;&#x5207;&#x308C;&#x901A;&#x77E5;</h2>
+<p>&#x65E2;&#x5B58;&#x306E;&#x8A2D;&#x5B9A;&#x3067;&#x671F;&#x9650;&#x5207;&#x308C;&#x9593;&#x76F4;&#x306E;&#x901A;&#x77E5;&#x3092;&#x51FA;&#x3059;&#x3088;&#x3046;&#x306A;&#x6A5F;&#x80FD;&#x306F;&#x306A;&#x3044;<br><code>shadow</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x306F;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x8A2D;&#x5B9A;&#x30BF;&#x30A4;&#x30DF;&#x30F3;&#x30B0;&#x306E;&#x60C5;&#x5831;&#x304C;&#x8A18;&#x8F09;&#x3055;&#x308C;&#x3066;&#x308B;&#x3088;&#x3046;&#x306A;&#x306E;&#x3067;&#x3001;&#x305D;&#x3053;&#x304B;&#x3089;&#x8A08;&#x7B97;&#x3057;&#x307E;&#x3059;  </p>
+<p>1970-01-01 00:00:00 UTC &#x304B;&#x3089;&#x306E;&#x79D2;&#x6570;&#x3092;&#x65E5;&#x6570;&#x306B;&#x5909;&#x63DB;</p>
+<pre><code class="lang-bash">expr `date +%s` / 60 / 60 / 24
+</code></pre>
+<p><code>shadow</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;3&#x9805;&#x76EE;&#x76EE;&#x306B;&#x540C;&#x69D8;&#x6642;&#x523B;&#x304B;&#x3089;&#x306E;&#x8A2D;&#x5B9A;&#x65E5;&#x304C;&#x8A18;&#x8F09;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x306E;&#x3067;<br><code>date</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x304B;&#x3089;&#x53D6;&#x5F97;&#x3057;&#x305F;&#x5024;&#x304B;&#x3089;&#x5F15;&#x304F;&#x3053;&#x3068;&#x3067;&#x3001;&#x521D;&#x671F;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x8A2D;&#x5B9A;&#x65E5;&#x304B;&#x3089;&#x4F55;&#x65E5;&#x7D4C;&#x904E;&#x3057;&#x3066;&#x3044;&#x308B;&#x304B;&#x3092;&#x8A08;&#x7B97;&#x3059;&#x308B;  </p>
+<p>&#x53C2;&#x8003;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;<br><a href="https://github.com/mizuti69/scripts/blob/develop/bin/submodules/check_passlock.sh" target="_blank">https://github.com/mizuti69/scripts/blob/develop/bin/submodules/check_passlock.sh</a>  </p>
+<h2 id="&#x6307;&#x5B9A;&#x65E5;&#x6642;&#x904E;&#x304E;&#x305F;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x8A2D;&#x5B9A;&#x304C;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x3092;&#x7121;&#x52B9;&#x5316;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;">&#x6307;&#x5B9A;&#x65E5;&#x6642;&#x904E;&#x304E;&#x305F;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x8A2D;&#x5B9A;&#x304C;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x3092;&#x7121;&#x52B9;&#x5316;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;</h2>
+<pre><code># chage -I &lt;&#x65E5;&#x6570;&gt; {&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x540D;}
+</code></pre><ul>
+<li><p>&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x30ED;&#x30C3;&#x30AF;&#x3092;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x306B;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;<br><code>login.defs</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;<code>PASS_MAX_DAYS</code>&#x306E;&#x5024;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x3001;<br>&#x300C;&#x5909;&#x66F4;&#x5F8C;&#x306B;&#x300D;&#x4F5C;&#x6210;&#x3055;&#x308C;&#x305F;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x306E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x306B;&#x306A;&#x308B;&#x3002;  </p>
+</li>
+<li><p>&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x30ED;&#x30C3;&#x30AF;&#x3092;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x306B;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;<br><code>useradd</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;<code>INACTIVE</code>&#x5024;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x3001;<br>&#x300C;&#x5909;&#x66F4;&#x5F8C;&#x306B;&#x300D;&#x4F5C;&#x6210;&#x3055;&#x308C;&#x305F;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x306E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x306B;&#x306A;&#x308B;&#x3002;  </p>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -968,14 +995,10 @@
 
             
                 
-                <a href="../4.security/5.security_iptables.html" class="navigation navigation-prev " aria-label="Previous page: iptables">
+                <a href="4.tips_audit.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 監査ログの設定">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="1.ssh_config.html" class="navigation navigation-next " aria-label="Next page: 基本設定">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -984,7 +1007,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SSHサーバ設定","level":"1.6","depth":1,"next":{"title":"基本設定","level":"1.6.1","depth":2,"path":"5.ssh/1.ssh_config.md","ref":"5.ssh/1.ssh_config.md","articles":[]},"previous":{"title":"iptables","level":"1.5.5","depth":2,"path":"4.security/5.security_iptables.md","ref":"4.security/5.security_iptables.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"5.ssh/index.md","mtime":"2018-06-29T06:29:46.099Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-15T05:07:57.745Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"パスワード有効期限の設定","level":"1.10.5","depth":2,"previous":{"title":"監査ログの設定","level":"1.10.4","depth":2,"path":"9.tips/4.tips_audit.md","ref":"9.tips/4.tips_audit.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"9.tips/5.tips_chage.md","mtime":"2018-10-15T05:00:29.978Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-15T05:07:57.745Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

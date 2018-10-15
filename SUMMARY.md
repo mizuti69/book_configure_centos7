@@ -57,3 +57,4 @@
   * [Fsecure Linux セキュリティ コマンドラインエディション](9.tips/2.tips_fsecure.md)
   * [sysstatの設定](9.tips/3.tips_sysstat.md)
   * [監査ログの設定](9.tips/4.tips_audit.md)
+  * [パスワード有効期限の設定](9.tips/5.tips_chage.md)  
