@@ -1021,13 +1021,13 @@ CREATE_MAIL_SPOOL=yes
 <li>&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x306E;&#x6700;&#x5C0F;&#x6587;&#x5B57;&#x6570;&#x5909;&#x66F4;</li>
 </ul>
 <pre><code># vi /etc/login.defs
-PASS_MIN_LEN    8
+PASS_MIN_LEN    9
 </code></pre><ul>
 <li>&#x8A8D;&#x8A3C;&#x30D5;&#x30ED;&#x30FC;&#x306E;&#x53B3;&#x683C;&#x5316;</li>
 </ul>
 <p>&#x307E;&#x305F;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x8A2D;&#x5B9A;&#x6642;&#x306B;&#x300C;&#x82F1;&#x8A9E;&#x5927;&#x6587;&#x5B57;&#x300D;&#x300C;&#x82F1;&#x8A9E;&#x5C0F;&#x6587;&#x5B57;&#x300D;&#x300C;&#x6570;&#x5B57;&#x300D;&#x300C;&#x8A18;&#x53F7;&#x300D;&#x306A;&#x3069;&#x3092;&#x5229;&#x7528;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x5236;&#x9650;  </p>
 <pre><code># vim /etc/security/pwquality.conf
-minlen = 8
+minlen = 9
 dcredit = -1
 ucredit = -1
 lcredit = -1
@@ -1048,7 +1048,7 @@ password    required      pam_deny.so
 </code></pre><p>&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x8A8D;&#x8A3C;&#x306B;&#x5931;&#x6557;10&#x56DE;&#x3057;&#x305F;&#x5834;&#x5408;&#x306B;&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x3092;&#x30ED;&#x30C3;&#x30AF;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x8A2D;&#x5B9A;  </p>
 <pre><code># vim /etc/pam.d/system-auth-ac
 auth        required      pam_env.so
-auth        required      pam_faillock.so preauth silent audit deny=10
+auth        required      pam_faillock.so preauth silent audit deny=10 unlock_time=300
 auth        sufficient    pam_unix.so nullok try_first_pass
 auth        [default=die] pam_faillock.so preauth silent authfail audit deny=10
 auth        requisite     pam_succeed_if.so uid &gt;= 1000 quiet_success
@@ -1060,7 +1060,7 @@ account     sufficient    pam_localuser.so
 account     sufficient    pam_succeed_if.so uid &lt; 1000 quiet
 account     required      pam_permit.so
 </code></pre><pre><code>auth        required      pam_env.so
-auth        required      pam_faillock.so preauth silent audit deny=10
+auth        required      pam_faillock.so preauth silent audit deny=10 unlock_time=300
 auth        sufficient    pam_unix.so nullok try_first_pass
 auth        [default=die] pam_faillock.so preauth silent authfail audit deny=10
 auth        requisite     pam_succeed_if.so uid &gt;= 1000 quiet_success
@@ -1132,7 +1132,7 @@ XXX 01 15:05:45 hostneme systemd: fprintd.service failed.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ユーザーデフォルトの設定","level":"1.4.1","depth":2,"next":{"title":"ユーザー・グループの作成","level":"1.4.2","depth":2,"path":"3.user/2.user_create.md","ref":"3.user/2.user_create.md","articles":[]},"previous":{"title":"アカウント管理","level":"1.4","depth":1,"path":"3.user/index.md","ref":"3.user/index.md","articles":[{"title":"ユーザーデフォルトの設定","level":"1.4.1","depth":2,"path":"3.user/1.user_default.md","ref":"3.user/1.user_default.md","articles":[]},{"title":"ユーザー・グループの作成","level":"1.4.2","depth":2,"path":"3.user/2.user_create.md","ref":"3.user/2.user_create.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"3.user/1.user_default.md","mtime":"2018-06-20T06:09:11.432Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-16T01:58:10.825Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ユーザーデフォルトの設定","level":"1.4.1","depth":2,"next":{"title":"ユーザー・グループの作成","level":"1.4.2","depth":2,"path":"3.user/2.user_create.md","ref":"3.user/2.user_create.md","articles":[]},"previous":{"title":"アカウント管理","level":"1.4","depth":1,"path":"3.user/index.md","ref":"3.user/index.md","articles":[{"title":"ユーザーデフォルトの設定","level":"1.4.1","depth":2,"path":"3.user/1.user_default.md","ref":"3.user/1.user_default.md","articles":[]},{"title":"ユーザー・グループの作成","level":"1.4.2","depth":2,"path":"3.user/2.user_create.md","ref":"3.user/2.user_create.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"3.user/1.user_default.md","mtime":"2018-11-08T03:52:25.605Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-08T03:53:35.492Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
